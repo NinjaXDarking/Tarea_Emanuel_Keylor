@@ -18,6 +18,12 @@ public class GameManager : MonoBehaviour
     public GameObject panelGameOver;
     public Text textoPuntajeFinal;
 
+
+    [Header("Elementos de Sonido")]
+    public AudioSource sonidoAumentoPuntaje;
+    public AudioSource sonidoBomba;
+
+
     public void Awake()
     {
         panelGameOver.SetActive(false);
@@ -42,6 +48,11 @@ public class GameManager : MonoBehaviour
             textoMejorPuntaje.text = "Mejor: " + puntaje.ToString();
             mejorPuntaje = puntaje;
         }
+
+        if (sonidoAumentoPuntaje != null)
+        {
+            sonidoAumentoPuntaje.Play();
+        }
     }
 
     public void AlTocarBomba()
@@ -50,6 +61,11 @@ public class GameManager : MonoBehaviour
         textoPuntajeFinal.text = "Puntaje :" + puntaje.ToString();
         textoMejorPuntajePanel.text = "Mejor puntaje: " + mejorPuntaje.ToString();
         Time.timeScale = 0;
+
+        if (sonidoBomba != null)
+        {
+            sonidoBomba.Play();
+        }
     }
 
     public void Reiniciar()
@@ -65,3 +81,4 @@ public class GameManager : MonoBehaviour
         }
     }
 }
+
